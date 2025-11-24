@@ -97,13 +97,24 @@ NetVisor scans your network, identifies hosts and services, and generates an int
 
 ## 🏗️ Architecture
 
-NetVisor consists of two components:
+NetVisor follows a **distributed client-server architecture** with three main components:
 
-**Server**: Central hub that stores network data, generates topology visualizations, and serves the web UI. Runs as a Docker container with a PostgreSQL database.
+**Server**: Central hub that stores network data, generates topology visualizations, and serves the web UI. Built with Rust (Axum framework) + PostgreSQL database.
 
-**Daemon**: Lightweight agent that performs network scanning and reports back to the server. Can run on one or multiple hosts to map different network segments.
+**Daemon**: Lightweight agent that performs network scanning and reports back to the server. Can run on one or multiple hosts to map different network segments. Supports network scanning, Docker discovery, and self-reporting.
+
+**Web UI**: Interactive frontend built with Svelte + TypeScript for visualization and management.
 
 The server-daemon architecture allows you to scan networks from multiple vantage points, essential for mapping VLANs and complex network topologies. The server's default docker compose (see below) includes an integrated daemon to get you up and running more easily.
+
+**📖 For detailed architecture documentation:** See [ARCHITECTURE.md](ARCHITECTURE.md)
+- System architecture and component overview
+- Backend structure (Rust + Axum + PostgreSQL)
+- Frontend architecture (Svelte + TypeScript)
+- Database schema and communication flows
+- Discovery system internals (3 types)
+- Security architecture
+- Deployment models and technology stack
 
 ---
 
